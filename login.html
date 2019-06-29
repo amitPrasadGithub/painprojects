@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			function loginParameterValidation() {
+				var username_t = document.forms["login"]["username_t"].value;
+				var password_t = document.forms["login"]["password_t"].value;
+				
+				if((username_t == "") || (password_t == ""))
+					alert("Please enter madatory fields")
+			}
+			function signUpParameterValidation() {
+				
+			}
+	</script>
+	</head>
+	<body id = "login"> 
+		<center>
+		<form name="login" method = "POST">
+			<div class="1" style="color:red; background-color:green">
+				<h1>Data Aggregation Services</h1>
+			</div>
+			<div id = "userName_label" style="background-color:yellow">
+				<label for="username_i">UserName</label>
+			</div>
+			<div id="userName_text" style="background-color:green">
+				<input type = "text" name = "username_t" id="username_i">
+			</div>
+			<div id = "password_label" style="background-color:yellow; margin-top:10px">
+				<label for="password_i">Password</label>
+			</div>
+			<div id = "password_t" style="background-color:green">
+				<input type = "password" name = "password_t" id="password_i">
+			</div>
+			<center>
+				<div id = "buttons" style="background-color:yellow; width:150px; margin-top:20px">
+					<div id="login" style = "float:right">
+						<button id="login" onclick="loginParameterValidation()">Login</button>
+					</div>
+					<div id = "back" style = "float:left">
+						<button id="signUp" onclick="signUpParameterValidation()">SignUp</button>
+					</div>
+					<br clear="all">
+				</div>
+			</center>
+		</form>	
+		</center>
+	</body>
+</html>	
