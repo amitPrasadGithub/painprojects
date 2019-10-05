@@ -30,8 +30,8 @@ public ArrayList<File> renameFiles(String root) {
 	
 	for(int i=0; i<fileList.length; i++) {
 		if(fileList[i].contains(".dat")) {
+			File o_file = new File(root_location + "\\" + fileList[i]);
 			File n_file = new File(root_location + "\\" + i + "_" + fileList[i]);
-			File o_file = new File(fileList[i]);
 			o_file.renameTo(n_file);
 			newFiles.add(n_file);
 		}
