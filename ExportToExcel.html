@@ -1,0 +1,44 @@
+<html>
+	<head>
+		<script src="FileSaver.js"></script>
+		<script src="xlsx.mini.js"></script>
+		<script>
+			function toExcel(e) {
+				var wb = XLSX.utils.book_new();
+				
+				wb.SheetNames.push("Export To Excel");
+				var data = [['Hi', 'ther']];
+				
+				var ws = XLSX.utils.aoa_to_sheet(data);
+				wb.Sheets["Test"] = ws;
+				
+				var wbout = XLSX.write(wb, {bookType:'xlsx', type:'binary'});
+				
+				var blob = new Blob([s2ab(wbout)], {type:"application/octet-stream"});
+				saveAs(blob, 'test.xlsx');
+			}
+			function s2ab(e) {
+					var buf = new ArrayBuffer(e.length);
+					var view = new Uint8Array(buf);
+					for(var i=0; i<e.length; i++) view[i] = e.charCodeAt(i)& 0xFF;
+					return buf;
+			}
+			function tableToExcel(e) {
+				var wb = XLSX.utils.table_to_book(document.getElementById('tab'), {sheet:"Export To Excel"});
+				var wbout = XLSX.write(wb, {bookType:'xlsx', type:'binary'});
+				var blob = new Blob([s2ab(wbout)], {type:"application/octet-stream"});
+				saveAs(blob, 'testTable.xlsx');
+			}
+		</script>
+	</head>
+	<body>
+		<button onClick="tableToExcel(this)">Excel</button>
+		
+		<table id="tab" style="display:none">
+			<tr>
+				<td>whatsup</td>
+				<td>Hey</td>
+			</tr>
+		</table>
+	</body>
+</html>
