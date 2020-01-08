@@ -1,0 +1,50 @@
+<html>
+	<head>
+		<link 	href = "https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/classic/theme-classic/resources/theme-classic-all.css" 
+				rel = "stylesheet" />
+		<script type = "text/javascript" 
+				src = "https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/ext-all.js"></script>
+		<script src="ExtJSFramework.js"></script>
+		<script>
+			function ex() {
+				var std = new Ext.create('CustomClasses.Student', 'cipher', 2);
+				std.getStudentDetails();
+
+				document.write(CustomClasses.Student.getStudentAge());
+				document.write(CustomClasses.Student.address);
+			}
+			function inheritance() {
+				var parent = new Ext.create('CustomClasses.Parent');
+				document.write(parent.id+" "+parent.name+"<br>");
+	
+				var child = new Ext.create('CustomClasses.Child');
+				document.write(child.id+" "+child.name+" "+child.isParent+"<br>");
+				document.write(child.parentMethod());
+				
+			}
+			function configDemo() {
+				<!-- 1st way to initialize  config -->
+				<!-- var configDemo = new Ext.create('CustomClasses.ConfigDemo'); -->
+				<!-- configDemo.setConfigName('config_n'); -->
+				<!-- document.write(configDemo.getConfigName()); -->
+
+				<!-- 2nd way to initialize config -->
+				var configDemo = new Ext.create('CustomClasses.ConfigDemo', 
+					{
+						configName:'xyz', configValue:'1'
+					});
+				document.write(configDemo.getConfigName()+"--|--"+configDemo.getConfigValue());
+			}
+			function customSetters() {
+				var sett = new Ext.create('CustomClasses.CustomSettersAndGetters', 
+							{
+								configName:'old_n', configValue:'old_v'
+							});
+				sett.setConfigName('new_n');
+			}
+		</script>
+	</head>
+	<body onLoad="customSetters()">
+		
+	</body>
+</html>
