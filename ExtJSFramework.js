@@ -89,3 +89,21 @@ Ext.define (
 		}
 	}
 );
+
+Ext.define (
+	'CustomClasses.CustomEvent', {
+		config:	{
+			configName:'unknown',
+			configId:'unknown'
+		},
+		mixins:	{
+			observable:'Ext.util.Observable'
+		},
+		constructor:	function(config) {
+			this.mixins.observable.constructor.call(this, config);
+		},
+		updateConfigName:	function(newName, oldName) {
+			this.fireEvent('configNameChanged', newName);
+		}
+	}
+);

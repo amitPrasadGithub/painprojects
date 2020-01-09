@@ -42,9 +42,35 @@
 							});
 				sett.setConfigName('new_n');
 			}
+			function customEventt() {
+				var student = new Ext.create('CustomClasses.CustomEvent', {configName:'xyz', configId:'1'});
+				student.on('configNameChanged', function(value) {
+					alert(value);
+				});
+				student.setConfigName('abc');
+			}
+			function domManipulation() {
+				var username = Ext.get('userName');
+				username.set({'value':'cipher'});
+				
+				Ext.fly('email').set({'value':'cipher@hotmail.com'});
+			}
+			function compositeDOMManupulation() {
+				<!-- 1st way -->
+				<!-- var inputEle = Ext.select('input'); -->
+				<!-- inputEle.set({'style':'background-color:green'}); -->
+				
+				<!-- 2nd way -->
+				Ext.select('input').set({'style':'background-color:green'});
+				Ext.select('p').set({'style':'background-color:red'});
+			}
 		</script>
 	</head>
-	<body onLoad="customSetters()">
+	<body onLoad="compositeDOMManupulation()">
+		user<input type="text" id="userName"/><br>
+		email<input type="text" id="email"/>
 		
+		<p>Hi there</p>
+		<p>I am cipher</p>
 	</body>
 </html>
