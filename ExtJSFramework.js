@@ -129,7 +129,9 @@ Ext.define(
 							
 							listeners:	{
 								change:	function(field, newValue, oldValue) {
-									alert(field.fieldLabel);
+									if(newValue) {
+										alert(field.fieldLabel);
+									}
 								}
 							}
 						},
@@ -143,7 +145,9 @@ Ext.define(
 							
 							listeners:	{
 								change:	function(field, newValue, oldValue) {
-									alert(field.fieldLabel);
+									if(newValue) {
+										alert(field.fieldLabel);
+									}
 								}
 							}
 						}
