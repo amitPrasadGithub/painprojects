@@ -107,3 +107,53 @@ Ext.define (
 		}
 	}
 );
+Ext.define(
+	'CustomClasses.RadioButtonDemo', {
+		createButtons:	function() {
+			Ext.create(
+				'Ext.Panel', {
+					title:'RadionButtonDemo',
+					width:300,
+					bodypanel:10,
+					renderTo:Ext.getBody(),
+					
+					items:	[
+					{xtype:'label', text:'Button'},
+						{
+							fieldLabel:'Java', 
+							id:'rb1',
+							xtype:'radio', 
+							name:'rbgroup', 
+							check:false, 
+							hiddenLabel:false,
+							
+							listeners:	{
+								change:	function(field, newValue, oldValue) {
+									alert(field.fieldLabel);
+								}
+							}
+						},
+						{
+							fieldLabel:'C++', 
+							id:'rb2', 
+							xtype:'radio', 
+							name:'rbgroup', 
+							check:false, 
+							hiddenLabel:false,
+							
+							listeners:	{
+								change:	function(field, newValue, oldValue) {
+									alert(field.fieldLabel);
+								}
+							}
+						}
+					], 
+					
+					bbar:	[
+
+					]
+				}
+			);
+		}
+	}
+);
