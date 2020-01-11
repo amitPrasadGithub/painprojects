@@ -1,0 +1,34 @@
+<html>
+	<head>
+		<link 	href = "https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/classic/theme-classic/resources/theme-classic-all.css" 
+				rel = "stylesheet" />
+		<script type = "text/javascript" 
+				src = "https://cdnjs.cloudflare.com/ajax/libs/extjs/6.0.0/ext-all.js"></script>
+	</head>
+	<body>
+		<script>
+			Ext.onReady(function() {
+					var cities = Ext.create('Ext.data.Store', {
+						fields:	['state', 'cityName'],
+						
+						data:	[
+							{'state':'Maharashtra', 'cityName':'Nagpur'},
+							{'state':'Rajsthan', 'cityName':'Kota'}
+						]
+					});
+					
+					Ext.create('Ext.form.ComboBox', {
+						fieldLabel:'choose city',
+						store:cities,
+						queryMode:'local',
+						displayField:'cityName',
+						valueField:'state',
+						renderTo:Ext.getBody()
+					});
+					
+				}
+			);
+		</script>
+		
+	</body>
+</html>
