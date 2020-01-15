@@ -1,0 +1,173 @@
+package com.ezdata.das.debug;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.StringReader;
+import java.io.StringWriter;
+import java.lang.reflect.Method;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
+import org.w3c.dom.Document;
+import org.xml.sax.InputSource;
+
+import org.apache.xml.security.c14n.Canonicalizer;
+import java.io.ByteArrayInputStream;
+import javax.xml.soap.MessageFactory;
+import javax.xml.soap.SOAPMessage;
+import java.io.StringBufferInputStream;
+
+public class Debugger {
+	static Class cls = null;
+	
+	public static String readFile(File file) {
+		StringBuffer sb = new StringBuffer();
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(file));
+			String line = "";
+			while ((line=br.readLine()) != null) {
+				sb.append(removeSpace(line));
+			}
+			br.close();
+			return sb.toString();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return "";
+		}
+	}
+	public void writeToFile(String str, File file) {
+		try {
+			BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+			writer.write(str);
+			writer.flush();
+			writer.close();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public static Document stringToDoc(String str) {
+		try {
+			DocumentBuilderFactory factory 	= DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder 		= factory.newDocumentBuilder();
+			InputSource is					= new InputSource(new StringReader(str));
+			return builder.parse(is);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	public static String docToString(Document doc) {
+		try {
+			DOMSource dom 		= new DOMSource(doc);
+			StringWriter writer = new StringWriter();
+			StreamResult result = new StreamResult(writer);
+			
+			TransformerFactory factory 	= TransformerFactory.newInstance();
+			Transformer transform		= factory.newTransformer();
+			transform.transform(dom, result);
+			
+			return writer.toString();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return "";
+		}
+	}
+	public static boolean debugResponseDoc() {
+		File file = new File("E:\\Project_\\Response\\Response.txt");
+		String str = readFile(file);
+		Document doc = stringToDoc(str);
+//		boolean status = 
+		return true;
+	}
+	public static boolean debugResponse1(long jobId) {
+		boolean  res = false;
+		File file = new File("E:\\Project_\\Response\\Response.txt");
+		String str = readFile(file);
+		Document doc = stringToDoc(str);
+		com.ezdata.das.datasource.processor.AccountProcessor ap = new com.ezdata.das.datasource.processor.AccountProcessor();
+		try {
+			res = ap.validateProcessResponse(doc, true, jobId);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return res;
+	}
+	public static void getClass(String className) {
+		if(className != null) {
+			try {
+				cls = Class.forName(className);
+				Method[] methods = cls.getMethods();
+				Object obj = cls.newInstance();
+				for(Method m:methods) {
+					String methodName = m.getName();
+					if(methodName.contains("run")) {
+						m.invoke(obj, obj);
+					}
+				}
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	public static String removeSpace(String line) {
+		if(line.contains("<")) {
+			line = line.substring(line.indexOf('<'));
+			return line;
+		}
+		return line;
+	}
+	public static SOAPMessage docToSOAPMessage(Document doc) {
+		try {
+			Canonicalizer c14n =
+			        Canonicalizer.getInstance(Canonicalizer.ALGO_ID_C14N_WITH_COMMENTS);
+			byte[] calonicalizerMessage = c14n.canonicalizeSubtree(doc);
+			ByteArrayInputStream is = new ByteArrayInputStream(calonicalizerMessage);
+			MessageFactory factory = MessageFactory.newInstance();
+			return factory.createMessage(null, is);
+			
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	public static SOAPMessage updateSOAPMessage(Document doc, SOAPMessage msg) {
+		DOMSource dom = new DOMSource(doc);
+		try {
+			msg.getSOAPPart().setContent(dom);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return msg;
+	}
+	public static SOAPMessage docToSOAPMessage2(Document doc) {
+		try {
+			String xml = docToString(doc);
+			InputStream in = new StringBufferInputStream(xml);
+			MessageFactory factory = MessageFactory.newInstance();
+			return factory.createMessage(null, in);
+			
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+}
