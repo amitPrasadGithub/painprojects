@@ -1,0 +1,22 @@
+1= create table test1 (
+		id int not null primary key,
+		name text,
+		address text
+	);
+
+2= test1.csv
+	1, jason parker, Riverdale
+	2, Betty Cooperm, Riverdale
+	3, Nelson Murdock, Hells Kitchen
+	4, Steve Rodgers, Brooklyn
+
+3= In MySQL terminal
+cmd = load data 'E:\\test1.csv'
+		into table test1
+		fields terminated by ','
+		optionally enclosed by '"'		OR		enclosed by '"'		=> If fields enclosed with double quotes '"' => ex. "Jason Parker"
+		lines terminated by '\n'
+		ignore 2 rows;												=>	To ignore lines at begining
+
+4= Requirements = my.ini
+	secure-file-priv=""
