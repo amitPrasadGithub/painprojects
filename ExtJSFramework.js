@@ -89,3 +89,75 @@ Ext.define (
 		}
 	}
 );
+
+Ext.define (
+	'CustomClasses.CustomEvent', {
+		config:	{
+			configName:'unknown',
+			configId:'unknown'
+		},
+		mixins:	{
+			observable:'Ext.util.Observable'
+		},
+		constructor:	function(config) {
+			this.mixins.observable.constructor.call(this, config);
+		},
+		updateConfigName:	function(newName, oldName) {
+			this.fireEvent('configNameChanged', newName);
+		}
+	}
+);
+Ext.define(
+	'CustomClasses.RadioButtonDemo', {
+		createButtons:	function() {
+			Ext.create(
+				'Ext.Panel', {
+					title:'RadionButtonDemo',
+					width:300,
+					bodypanel:10,
+					renderTo:Ext.getBody(),
+					
+					items:	[
+					{xtype:'label', text:'Button'},
+						{
+							fieldLabel:'Java', 
+							id:'rb1',
+							xtype:'radio', 
+							name:'rbgroup', 
+							check:false, 
+							hiddenLabel:false,
+							
+							listeners:	{
+								change:	function(field, newValue, oldValue) {
+									if(newValue) {
+										alert(field.fieldLabel);
+									}
+								}
+							}
+						},
+						{
+							fieldLabel:'C++', 
+							id:'rb2', 
+							xtype:'radio', 
+							name:'rbgroup', 
+							check:false, 
+							hiddenLabel:false,
+							
+							listeners:	{
+								change:	function(field, newValue, oldValue) {
+									if(newValue) {
+										alert(field.fieldLabel);
+									}
+								}
+							}
+						}
+					], 
+					
+					bbar:	[
+
+					]
+				}
+			);
+		}
+	}
+);
