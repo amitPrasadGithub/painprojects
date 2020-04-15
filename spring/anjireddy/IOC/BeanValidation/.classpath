@@ -5,5 +5,8 @@
 	<classpathentry kind="lib" path="/home/beyonder/Project_/jars/spring/commons-logging-api-1.1.jar"/>
 	<classpathentry kind="lib" path="/home/beyonder/Project_/jars/spring/spring-beans-5.2.3.RELEASE.jar" sourcepath="/home/beyonder/.m2/repository/org/springframework/spring-beans/5.2.3.RELEASE/spring-beans-5.2.3.RELEASE-sources.jar"/>
 	<classpathentry kind="lib" path="/home/beyonder/Project_/jars/spring/spring-core-5.2.3.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/beyonder/Project_/jars/spring/spring-context-5.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/beyonder/Project_/jars/spring/spring-aop-5.2.2.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/beyonder/Project_/jars/spring/spring-expression-5.2.2.RELEASE.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
