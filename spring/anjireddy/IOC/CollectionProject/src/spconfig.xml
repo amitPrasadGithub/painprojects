@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+	"http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="sampleBean" class="SampleBean">
+		<property name="set">
+			<set>
+				<value>1001</value>
+				<value>Jason</value>
+				<value>Riverdale</value>
+				<ref bean="demoBean" />
+			</set>
+		</property>
+	</bean>
+	<bean id="demoBean" class="DemoBean">
+		<property name="name" value="cipher" />
+	</bean>
+</beans>

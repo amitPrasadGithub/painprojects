@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="/home/beyonder/Project_/jars/spring/commons-logging-api-1.1.jar"/>
+	<classpathentry kind="lib" path="/home/beyonder/Project_/jars/spring/spring-beans-5.2.3.RELEASE.jar"/>
+	<classpathentry kind="lib" path="/home/beyonder/Project_/jars/spring/spring-core-5.2.3.RELEASE.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

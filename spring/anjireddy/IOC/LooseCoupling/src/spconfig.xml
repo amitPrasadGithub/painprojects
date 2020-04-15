@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+	"http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+	
+	<beans>
+		<bean id="car" class="Car">
+			<property name="fuelType" value="diesel" />
+			<property name="maxSpeed" value="100" />
+		</bean>
+		<bean id="bike" class="Bike">
+			<property name="fuelType" value="petrol" />
+			<property name="maxSpeed" value="100" />
+		</bean>
+	</beans>
