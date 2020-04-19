@@ -10,3 +10,4 @@ spring/anjireddy/IOC/LooseCoupling/bin/*
 spring/anjireddy/IOC/SpringAnnotations/bin/*
 spring/anjireddy/IOC/springcoreproject/bin/*
 spring/anjireddy/IOC/BeanLifeCycle/bin/*
+spring/kk/springDataJPA/PeopleManagementSpringBootDataApp/target/*
