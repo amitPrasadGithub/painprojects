@@ -1,4 +1,5 @@
 .git/*
+.metadata/*
 spring/anjireddy/IOC/AutoWire/bin/*
 spring/anjireddy/IOC/AutoWiring/bin/*
 spring/anjireddy/IOC/BeanValidation/bin/*
@@ -9,5 +10,3 @@ spring/anjireddy/IOC/LooseCoupling/bin/*
 spring/anjireddy/IOC/SpringAnnotations/bin/*
 spring/anjireddy/IOC/springcoreproject/bin/*
 spring/anjireddy/IOC/BeanLifeCycle/bin/*
-
-
