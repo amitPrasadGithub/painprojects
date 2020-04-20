@@ -27,7 +27,14 @@ public class PeopleManagementSpringBootDataAppApplication implements CommandLine
 							)
 				);
 //		createPerson();
-		createPersons(persons);
+//		createPersons(persons);
+
+		List<Integer> list = new ArrayList<> (
+					Arrays.asList(4, 5, 6)
+				);
+		getPersonByIds(list);
+		
+//		deletePersonById(personId);
 	}
 
 	public static void main(String[] args) {
@@ -37,10 +44,14 @@ public class PeopleManagementSpringBootDataAppApplication implements CommandLine
 	public void createPerson() {
 		Person person = new Person("Jason", "Parker", "jason.parker@gmail.com", new Date());
 		peopleManagementService.createPerson(person);
-		System.out.print(person);
 	}
 	public void createPersons(List<Person> list) {
 		peopleManagementService.createPersons(list);
 	}
+	private void getPersonByIds(List<Integer> list) {
+		Iterable<Person> person_list = peopleManagementService.getPersonByIds(list);
+		System.out.print("\n\n\n ###"+person_list+"### \n\n\n");
 
+		person_list.forEach(System.out::println);
+	}
 }

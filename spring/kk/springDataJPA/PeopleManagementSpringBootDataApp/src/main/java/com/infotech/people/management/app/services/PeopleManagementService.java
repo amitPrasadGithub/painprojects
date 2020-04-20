@@ -22,4 +22,8 @@ public class PeopleManagementService {
 		peopleManagementDAO.saveAll(list);
 	}
 
+	public Iterable<Person> getPersonByIds(List<Integer> list) {
+		return peopleManagementDAO.findAllById(list);
+	}
+
 }

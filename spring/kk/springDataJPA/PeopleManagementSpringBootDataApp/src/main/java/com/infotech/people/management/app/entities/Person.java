@@ -31,6 +31,9 @@ public class Person {
 	
 	
 
+	Person() {
+		
+	}
 	public Person(String firstName, String lastName, String email, Date creationDate) {
 		super();
 		this.firstName = firstName;
@@ -42,7 +45,10 @@ public class Person {
 	public int getId() {
 		return id;
 	}
-
+	
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getFirstName() {
 		return firstName;
