@@ -20,27 +20,19 @@ public class PeopleManagementSpringBootDataAppApplication implements CommandLine
 	private PeopleManagementService peopleManagementService;
 
 	public void run(String... args) throws Exception {
-		List<Person> persons = new ArrayList<Person>(
-					Arrays.asList(
-								new Person("Betty", "Cooper", "betty.cooper@gmail.com", new Date()),
-								new Person("Archie", "Andrews", "archie.andrews@gmail.com", new Date())
-							)
-				);
+		/*
+		 * Add paramters from BeforeApplicationStart
+		 */
+		
 //		createPerson();
 //		createPersons(persons);
-
-		List<Integer> list = new ArrayList<> (
-					Arrays.asList(4, 5, 6)
-				);
-		getPersonByIds(list);
+//		deletePersonById(6);
+//		updateEmail(4, "parker11.jason@riverdale.com");
 		
-//		deletePersonById(personId);
 	}
-
 	public static void main(String[] args) {
 		SpringApplication.run(PeopleManagementSpringBootDataAppApplication.class, args);
 	}
-	
 	public void createPerson() {
 		Person person = new Person("Jason", "Parker", "jason.parker@gmail.com", new Date());
 		peopleManagementService.createPerson(person);
@@ -50,8 +42,20 @@ public class PeopleManagementSpringBootDataAppApplication implements CommandLine
 	}
 	private void getPersonByIds(List<Integer> list) {
 		Iterable<Person> person_list = peopleManagementService.getPersonByIds(list);
-		System.out.print("\n\n\n ###"+person_list+"### \n\n\n");
-
 		person_list.forEach(System.out::println);
 	}
+	private void deletePerson(Person person) {
+		peopleManagementService.deletePerson(person);
+	}
+	private void deletePersonById(int id) {
+		peopleManagementService.deletePersonById(id);
+	}
+	
+	public void updateEmail(int id, String email) {
+		Person person = peopleManagementService.getPersonById(id);
+		if(person.getId() == id) 
+			person.setEmail(email);
+		peopleManagementService.createPerson(person);
+	}
+
 }

@@ -1,0 +1,32 @@
+==Insert person by list===
+List<Person> insertPersonList = new ArrayList(
+		Arrays.asList(
+			new Person("Jason", "Parker", "jason.parker@riverdale.com", new Date()),
+			new Person("Betty", "Cooper", "betty.cooper@riverdale.com", new Date()),
+			new Person("Archie", "Andrews", "archie.andrews@riverdale.com", new Date()),
+			new Person("Cheryl", "Parker", "cheryl.parker@riverdale.com", new Date())
+		)
+	);
+	
+
+
+==Insert Person==
+Person person = new Person("Jason", "Parker", "jason.parker@riverdale.com", new Date());
+
+
+==delete person by id===
+Person person = new Person();
+person.setId(1);
+
+
+==delete Person by list==
+List<Integer> deletePersonList = new ArrayList(
+		Arrays.asList(1, 2, 4, 5)
+	);
+
+
+List<Person> deletePersonListObject = new ArrayList(
+		Arrays.asList(
+			new Person("", "", "cheryl.parker@riverdale.com", new Date())
+		)
+	);

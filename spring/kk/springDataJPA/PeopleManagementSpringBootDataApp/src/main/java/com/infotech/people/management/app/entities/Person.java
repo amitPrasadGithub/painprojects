@@ -9,8 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicUpdate;
+
 @Entity
 @Table(name="person_table")
+@DynamicUpdate
 public class Person {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,9 +32,7 @@ public class Person {
 	@Column(name="creation_date")
 	private Date creationDate;
 	
-	
-
-	Person() {
+	public Person() {
 		
 	}
 	public Person(String firstName, String lastName, String email, Date creationDate) {
@@ -87,6 +88,4 @@ public class Person {
 		return "Person [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", creationDate=" + creationDate + "]";
 	}
-	
-	
 }
