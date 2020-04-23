@@ -15,3 +15,5 @@ spring/kk/springDataJPA/PeopleManagementSpringBootDataApp/target/*
 spring/kk/springDataJPA/PeopleManagementSpringbootDataApp_CustomQueriesWithMethodNames/target/*
 spring/kk/springDataJPA/PeopleManagementSpringBooDatatApp_CustomQueriesWithNameQueryAndNamedNativeQuery/target/*
 spring/kk/springDataJPA/PeopleManagementSpringBootDataApp_CustomQueries/target/*
+
+spring/javaTechie/SpringDataJPA/SpringDataJPA_EntityRelationship/target/*
