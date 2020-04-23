@@ -10,4 +10,8 @@ spring/anjireddy/IOC/LooseCoupling/bin/*
 spring/anjireddy/IOC/SpringAnnotations/bin/*
 spring/anjireddy/IOC/springcoreproject/bin/*
 spring/anjireddy/IOC/BeanLifeCycle/bin/*
+
 spring/kk/springDataJPA/PeopleManagementSpringBootDataApp/target/*
+spring/kk/springDataJPA/PeopleManagementSpringbootDataApp_CustomQueriesWithMethodNames/target/*
+spring/kk/springDataJPA/PeopleManagementSpringBooDatatApp_CustomQueriesWithNameQueryAndNamedNativeQuery/target/*
+spring/kk/springDataJPA/PeopleManagementSpringBootDataApp_CustomQueries/target/*

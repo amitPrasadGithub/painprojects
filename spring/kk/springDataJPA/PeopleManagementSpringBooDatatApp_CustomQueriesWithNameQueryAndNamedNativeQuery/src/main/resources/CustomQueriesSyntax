@@ -1,0 +1,22 @@
+/*
+	 * 
+	 * NamedQueries(
+	 * 		value={
+	 * 			@NamedQuery(name="Entity.queryName", query="select p from EntityName p where property1=?1")
+	 * 		}
+	 * )
+	 * OR
+	 * @NamedQuery(name="Entity.queryName", query="select p from EntityName p where property1="?1")
+	 */
+
+	
+	/*
+	 * 
+	 * NamedNativeQueries(
+	 * 		value={
+	 * 			@NamedNativeQuery(name="Entity.queryName", query="select column from table where column=?1", EntityClassName.class)
+	 * 		}
+	 * )
+	 * OR
+	 * @NamedNativeQuery(name="Entity.queryName", query="select column from table where column=?1", resultClass=Entity.class)
+	 */
