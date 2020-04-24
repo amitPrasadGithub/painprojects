@@ -19,3 +19,10 @@ spring/kk/springDataJPA/PeopleManagementSpringBootDataApp_CustomQueries/target/*
 spring/javaTechie/SpringDataJPA/SpringDataJPA_EntityRelationship/target/*
 
 spring/cipher/springDataJPA/JPAJoin/target/*
+
+spring/cipher/springDataJPA/SpringDataJPA_POC_1/target/*
+spring/cipher/springDataJPA/SpringDataJPA_StaticData_POC_2/target/*
+spring/cipher/springDataJPA/SpringDataJPA_Dev_POC_3/target/*
+spring/cipher/springDataJPA/SpringDataJPA_Production_POC_4/target/*
+
+
