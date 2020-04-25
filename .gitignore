@@ -25,4 +25,5 @@ spring/cipher/springDataJPA/SpringDataJPA_StaticData_POC_2/target/*
 spring/cipher/springDataJPA/SpringDataJPA_Dev_POC_3/target/*
 spring/cipher/springDataJPA/SpringDataJPA_Production_POC_4/target/*
 
-
+spring/cipher/springSecurity/SpringSecurity_POC_1/target/*
+spring/cipher/springSecurity/SpringSecurity_POC_2/target/*
