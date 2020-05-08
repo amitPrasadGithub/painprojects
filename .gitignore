@@ -42,3 +42,5 @@ spring/cipher/springSecurity/SpringSecurity_JDBCAuthentication_ManualSchemaGener
 spring/cipher/springSecurity/SpringSecurity_JDBCAuthentication_ManualSchemaGenerationOverridingDefaultTableAndColumnNames_MySQL/src/test/*
 spring/cipher/springSecurity/SpringSecurity_JPAAuthentication_MySQL/src/test/*
 spring/cipher/springSecurity/SpringSecurity_JWT/src/test/*
+
+spring/cipher/Spring_POC/target/*
