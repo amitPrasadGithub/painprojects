@@ -1,0 +1,130 @@
+	<properties>
+		<maven.compiler.target>8</maven.compiler.target>
+		<maven.compiler.source>8</maven.compiler.source>
+		<junit.jupiter.version>5.4.0</junit.jupiter.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${junit.jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+imports...
+	
+	|	import static org.assertj.core.api.Assertions.assertThat;
+	|	import static org.mockito.Mockito.when;
+	
+	
+Compare only few attributes of expected JSON and Actual JSON...
+
+	|	this.mockMvc.perform(
+    |            MockMvcRequestBuilders.get("/rest/students/studentId/1").accept(MediaType.APPLICATION_JSON))
+    |                	.andExpect(MockMvcResultMatchers.status().isOk())
+    |                	.andExpect(MockMvcResultMatchers.jsonPath("$studentId", Matchers.is("1")))
+    |                	.andExpect(MockMvcResultMatchers.jsonPath("$firstName", Matchers.is("Jason"))
+	|					.andExpect(MockMvcResultMatchers.jsonPath("$.*", Matchers.hasSize(2))				---> Optional statement
+	|						);
+	
+Compare all attributes of expected and actual JSON...
+	|	RequestBuilder builder = MockMvcRequestBuilders.get("/url").accept(MediaType.APPLICATION_JSON);
+	|	MvcResult result = this.mockMvc.perform(builder).andReturn();
+	|	String expected = "{studentId:1, firstName:Jason, lastName:Parker, creationDate:2020-05-04}";
+	|	JsonAssert.assertEquals(expected, result.getResponse().getContentAsString(), false);
+					
+Object/Entity to JSON...
+	
+	|	ObjectMapper objectMapper = new ObjectMapper();
+	|	Student student = new Student();
+	|	this.mockMvc.perform(
+	|		MockMvcRequestBuilders.post("/post/url")
+	|			.accept(MediaType.APPLICATION_JSON)
+	|			.contenType(MediaType.APPLICATION_JSON)
+	|			.content(objectMapper.writeValueAsString(student))
+	|			.andExpect(MockMvcResultMatchers.status().isOk());
+	|						)
+
+JSON to Object/Entity...
+	
+	|	ObjectMapper objectMapper = new ObjectMapper();
+	|	RequestBuilder builder = MockMvcRequestBuilders.get("/rest/students/studentId/1")
+	|		.accept(MediaType.APPLICATION_JSON)					
+	|		.contentType(MediaType.APPLICATION_JSON)
+	|		.content(objectMapper.writeValueAsString(student));
+	|			
+	|	MvcResult result = this.mockMvc.perform(builder).andReturn();
+	|	Student student = objectMapper.readValue(result.getResponse().getContentAsString(), Student.class);
+	
+
+===Controller Layer===	
+
+when().thenReturn()...[[get...controller layer test
+	
+	|	 Student expectedStudent = getStudent();
+    |    when(studentService.findByEmail("jason.parker@riverdale.com")).thenReturn(expectedStudent);
+    |    RequestBuilder builder = MockMvcRequestBuilders.get("/rest/students/email/jason.parker@riverdale.com").accept(MediaType.APPLICATION_JSON);
+    |    MvcResult result = this.mockMvc.perform(builder).andReturn();
+    |    Student actualStudent = objectMapper.readValue(result.getResponse().getContentAsString(), Student.class);
+    |    assertThat(actualStudent.getFirstName()).isEqualTo(expectedStudent.getFirstName());
+
+when().thenReturn()..[[post...controller layer test
+	
+	|	Student expected = getStudent10();
+    |    when(studentService.save(expected)).thenReturn(expected);
+    |    RequestBuilder builder = MockMvcRequestBuilders.post("/rest/admin/students/post/student").accept(MediaType.APPLICATION_JSON)
+    |            .contentType(MediaType.APPLICATION_JSON)
+    |            .content(objectMapper.writeValueAsString(expected));
+    |    MvcResult result = this.mockMvc.perform(builder).andReturn();
+    |
+    |    Student actual = objectMapper.readValue(result.getResponse().getContentAsString(), Student.class);
+    |    assertThat(expected.getFirstName()).isEqualTo(actual.getFirstName());
+		
+when().thenReturn()..[[delete...controller layer test
+	|		this.mockMvc.perform(
+	|			MockMvcRequestBuilders.delete("/rest/admin/students/studentId/10"))
+	|				.andExpect(MockMvcResultMatchers.status().isNoContent()
+	|							);
+								
+when().thenReturn()..[[put..controller layer test
+
+	|	Student student = getStudent();
+    |    this.mockMvc.perform(
+	|		MockMvcRequestBuilders.put("/rest/admin/students/studentId/10")
+    |            .contentType("application/json")
+    |            .content(objectMapper.writeValueAsString(student)))
+    |            .andExpect(MockMvcResultMatchers.status().isOk()
+	|						);
+
+===Complete Controller===
+
+===Service layer===
+
+findByEmail()...
+	|	Student student = getStudent();
+    |    when(studentRepository.findByEmail("jason.parker@riverdale.com")).thenReturn(student);
+    |    assertThat(studentService.findByEmail("jason.parker@riverdale.com")).isEqualTo(student);
+	
+save()...
+    |   Student student = getStudent();
+    |   when(studentRepository.save(student)).thenReturn(student);
+    |   assertThat(studentService.save(student)).isEqualTo(student);
+	
+update()...
+   |   Student student = getStudent();
+   |   when(studentRepository.save(student)).thenReturn(student);
+   |   assertThat(studentService.update(student, 1L)).isEqualTo(student);
+   
+delete()...
+    |    studentService.deleteById(10L);
+    |    verify(studentRepository, times(1)).deleteById(10L);
+	
+===Complete service===	
+   
+
+	
+
+
+
