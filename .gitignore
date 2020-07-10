@@ -44,3 +44,9 @@ spring/cipher/springSecurity/SpringSecurity_JPAAuthentication_MySQL/src/test/*
 spring/cipher/springSecurity/SpringSecurity_JWT/src/test/*
 
 spring/cipher/Spring_POC/target/*
+
+#RESTExceptionHandler
+spring/cipher/RESTExceptionHandler/target/*
+spring/cipher/RESTExceptionHandler/.settings/*
+spring/cipher/RESTExceptionHandler/target/.classpath
+spring/cipher/RESTExceptionHandler/target/.project
