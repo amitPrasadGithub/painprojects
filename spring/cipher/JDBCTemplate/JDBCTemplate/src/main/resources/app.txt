@@ -1,0 +1,5 @@
+database = jdbctemplate
+tables {
+    user (user_id, fname, lname, email)
+    city (address_id, city)
+}
