@@ -50,3 +50,7 @@ spring/cipher/RESTExceptionHandler/target/*
 spring/cipher/RESTExceptionHandler/.settings/*
 spring/cipher/RESTExceptionHandler/target/.classpath
 spring/cipher/RESTExceptionHandler/target/.project
+
+spring/cipher/JDBCTemplate/JDBCTemplate/.mvn/*
+spring/cipher/JDBCTemplate/JDBCTemplate/target/*
+spring/cipher/JDBCTemplate/JDBCTemplate/.settings/*

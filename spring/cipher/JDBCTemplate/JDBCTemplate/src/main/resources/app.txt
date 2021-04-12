@@ -3,3 +3,6 @@ tables {
     user (user_id, fname, lname, email)
     city (address_id, city)
 }
+
+References:
+1. https://mkyong.com/spring/spring-jdbctemplate-querying-examples/
